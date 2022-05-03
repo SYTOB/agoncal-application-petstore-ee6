@@ -5,12 +5,17 @@ import javax.validation.constraints.NotNull;
 
 import lombok.EqualsAndHashCode;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
  *         --
  */
 @EqualsAndHashCode
+@Getter
+@Setter
 public class CartItem {
 
     // ======================================
@@ -40,25 +45,6 @@ public class CartItem {
         return item.getUnitCost() * quantity;
     }
 
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 
     // ======================================
     // =   Methods toString   =
