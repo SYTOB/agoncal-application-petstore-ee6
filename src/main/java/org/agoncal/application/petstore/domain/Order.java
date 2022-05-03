@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.List;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
@@ -17,6 +19,8 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = Order.FIND_ALL, query = "SELECT o FROM Order o")
 })
+
+@EqualsAndHashCode
 public class Order {
 
     // ======================================
@@ -157,28 +161,9 @@ public class Order {
     }
 
     // ======================================
-    // =   Methods hash, equals, toString   =
+    // =   Methods toString   =
     // ======================================
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-
-        Order order = (Order) o;
-
-        if (!customer.equals(order.customer)) return false;
-        if (orderDate != null && !orderDate.equals(order.orderDate)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = orderDate != null ? orderDate.hashCode() : 0;
-        result = 31 * result + customer.hashCode();
-        return result;
-    }
 
     @Override
     public String toString() {

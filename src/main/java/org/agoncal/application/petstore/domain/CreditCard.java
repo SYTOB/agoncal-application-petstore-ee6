@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
@@ -14,6 +16,7 @@ import javax.validation.constraints.Size;
  */
 
 @Embeddable
+@EqualsAndHashCode
 public class CreditCard {
 
     // ======================================
@@ -75,25 +78,9 @@ public class CreditCard {
     }
 
     // ======================================
-    // =   Methods hash, equals, toString   =
+    // =   Methods toString   =
     // ======================================
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CreditCard)) return false;
-
-        CreditCard that = (CreditCard) o;
-
-        if (!creditCardNumber.equals(that.creditCardNumber)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return creditCardNumber.hashCode();
-    }
 
     @Override
     public String toString() {

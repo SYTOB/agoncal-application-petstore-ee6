@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
@@ -22,6 +24,7 @@ import java.util.List;
         @NamedQuery(name = Product.FIND_ALL, query = "SELECT p FROM Product p")
 })
 @XmlRootElement
+@EqualsAndHashCode
 public class Product {
 
     // ======================================
@@ -113,25 +116,8 @@ public class Product {
     }
 
     // ======================================
-    // =   Methods hash, equals, toString   =
+    // =   Methods toString   =
     // ======================================
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-
-        Product product = (Product) o;
-
-        if (!name.equals(product.name)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
 
     @Override
     public String toString() {

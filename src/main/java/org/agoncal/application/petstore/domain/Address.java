@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Antonio Goncalves
@@ -11,13 +12,15 @@ import javax.validation.constraints.Size;
  *         --
  */
 
+
+ 
 @Embeddable
+@EqualsAndHashCode
 public class Address {
 
     // ======================================
     // =             Attributes             =
     // ======================================
-
     @Column(nullable = false)
     @NotNull
     @Size(min = 5, max = 50)
@@ -41,6 +44,7 @@ public class Address {
     // =            Constructors            =
     // ======================================
 
+    
     public Address() {
     }
 
@@ -104,36 +108,8 @@ public class Address {
     }
 
     // ======================================
-    // =   Methods hash, equals, toString   =
+    // =   Method toString   =
     // ======================================
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address)) return false;
-
-        Address address = (Address) o;
-
-        if (!city.equals(address.city)) return false;
-        if (!country.equals(address.country)) return false;
-        if (state != null ? !state.equals(address.state) : address.state != null) return false;
-        if (!street1.equals(address.street1)) return false;
-        if (street2 != null ? !street2.equals(address.street2) : address.street2 != null) return false;
-        if (!zipcode.equals(address.zipcode)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = street1.hashCode();
-        result = 31 * result + (street2 != null ? street2.hashCode() : 0);
-        result = 31 * result + city.hashCode();
-        result = 31 * result + (state != null ? state.hashCode() : 0);
-        result = 31 * result + zipcode.hashCode();
-        result = 31 * result + country.hashCode();
-        return result;
-    }
 
     @Override
     public String toString() {

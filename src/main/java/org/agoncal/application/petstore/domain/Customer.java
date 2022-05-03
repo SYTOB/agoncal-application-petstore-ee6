@@ -14,6 +14,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
@@ -21,6 +23,7 @@ import java.util.GregorianCalendar;
  */
 
 @Entity
+@EqualsAndHashCode
 @NamedQueries({
         @NamedQuery(name = Customer.FIND_BY_LOGIN, query = "SELECT c FROM Customer c WHERE c.login = :login"),
         @NamedQuery(name = Customer.FIND_BY_LOGIN_PASSWORD, query = "SELECT c FROM Customer c WHERE c.login = :login AND c.password = :password"),
@@ -213,25 +216,8 @@ public class Customer implements Serializable {
     }
 
     // ======================================
-    // =   Methods hash, equals, toString   =
+    // =   Methods toString   =
     // ======================================
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
-
-        Customer customer = (Customer) o;
-
-        if (!login.equals(customer.login)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return login.hashCode();
-    }
 
     @Override
     public String toString() {
